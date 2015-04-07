@@ -1,0 +1,1 @@
+vm_dev1 ansible_ssh_host=10.211.55.6 ansible_ssh_port=22
