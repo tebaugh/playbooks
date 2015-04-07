@@ -1,4 +1,6 @@
 ---
+# For this to work correctly port 80 must be open
+# 
 - name: Configure webserver with nginx
   hosts: webservers 
   sudo:  True
