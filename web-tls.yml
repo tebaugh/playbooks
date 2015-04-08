@@ -17,6 +17,9 @@
       yum: name=nginx state=present update_cache=true
       notify: restart nginx 
 
+    - name: create directories for ssl certificates
+      file: path=/etc/nginx/ssl state=directory
+
     - name: copy TLS key
       copy: src=files/nginx.key dest={{ key_file }} owner=root mode=0600
       notify: restart nginx
@@ -26,7 +29,7 @@
       notify: restart nginx
 
     - name: copy nginx config file
-      copy: src=files/nginx.conf dest=/etc/nginx/nginx.conf
+      template: src=templates/ssl.conf.j2 dest=/etc/nginx/conf.d/ssl.conf
 
     - name: copy index.html
       template: src=templates/index.html.j2 dest=/usr/share/nginx/html/index.html mode=0644
