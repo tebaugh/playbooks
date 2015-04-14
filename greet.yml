@@ -1,0 +1,9 @@
+---
+-  name: pass a message on the command line
+   hosts: localhost
+   vars:
+     greeting: "You didnt specify a message"
+   tasks:
+     - name: output a message
+       debug: msg="{{ greeting }}"
+
