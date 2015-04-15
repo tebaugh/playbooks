@@ -1,0 +1,32 @@
+[vagrant]
+vagrant1 ansible_ssh_host=10.211.55.9 ansible_ssh_port=22
+vagrant2 ansible_ssh_host=10.211.55.10 ansible_ssh_port=22
+vagrant3 ansible_ssh_host=10.211.55.6 ansible_ssh_port=22
+
+[localhost]
+localhost ansible_connection=local
+
+[web]
+vagrant1
+
+[task]
+vagrant2
+
+[rabbitmq]
+vagrant3
+
+[db]
+vagrant3
+
+[django:children]
+web
+task
+
+[vagrant:vars]
+db_primary_host=vagrant3
+db_primary_port=5432
+db_name=widget_vagrant
+db_user=widgetuser
+db_password=password
+rabbitmq=vagrant3
+rabbitmq_port=5672

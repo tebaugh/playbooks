@@ -1,0 +1,7 @@
+---
+-  name: deploy postres
+   hosts: db 
+   vars_files:
+     - secrets.yml
+   roles:
+     - role: postgres

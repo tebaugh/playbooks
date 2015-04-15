@@ -1,0 +1,10 @@
+---
+-  name:  install yum packages for postgres
+   yum: name={{ item }} update_cache=true state=present
+   sudo: True
+   with_items:
+     - postgresql-libs.86_64
+     - postgresql-server
+     # Adapter fort Python programming language
+     - python-psycopg2.x86_64
+   

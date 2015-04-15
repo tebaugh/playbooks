@@ -1,0 +1,9 @@
+---
+-  name: deploy postres
+   hosts: db 
+   vars_files:
+     - secrets.yml
+   roles:
+     - role: postgres
+       database_name: ansible-test
+       database_user: "{{ postgres_proj_name }}"
